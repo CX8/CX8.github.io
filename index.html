@@ -182,7 +182,7 @@
 
 
 <footer class="container-fluid bg-4 text-center">
-    <p>Christian Vuerich, Bootstrap Theme Byeeeeeeeeeeeeeeeeee <a href="https://www.w3schools.com">www.w3schools.com</a></p>
+    <p>Christian Vuerich, Bootstrap Theme By <a href="https://www.w3schools.com">www.w3schools.com</a></p>
     <p>Drag this link to your bookmarks bar to use the Pizza Dough Calculator:</p>
     <a id="bookmarklet-link" href="#" style="display: inline-block; padding: 10px 15px; background-color: #007bff; color: white; text-decoration: none; border-radius: 4px;">Pizza Dough Calculator</a>
 </footer>
@@ -190,76 +190,121 @@
 <script>
     // Define the bookmarklet code
     const jsCode = `
-        (function() {
-            const showPopup = () => {
-                const container = document.createElement('div');
-                container.style.position = 'fixed';
-                container.style.top = '50%';
-                container.style.left = '50%';
-                container.style.transform = 'translate(-50%, -50%)';
-                container.style.width = '400px';
-                container.style.maxHeight = '80vh';
-                container.style.overflowY = 'auto';
-                container.style.padding = '20px';
-                container.style.backgroundColor = 'white';
-                container.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
-                container.style.borderRadius = '8px';
-                container.style.zIndex = '1000';
-                container.style.fontFamily = 'Arial, sans-serif';
-                container.style.color = '#333';
+(function() {
+    const showPopup = () => {
+        const e = document.createElement("div");
+        e.style.position = "fixed", e.style.top = "50%", e.style.left = "50%", e.style.transform = "translate(-50%,-50%)", e.style.width = "400px", e.style.maxHeight = "80vh", e.style.overflowY = "auto", e.style.padding = "20px", e.style.backgroundColor = "white", e.style.boxShadow = "0 4px 8px rgba(0,0,0,0.2)", e.style.borderRadius = "8px", e.style.zIndex = "1000", e.style.fontFamily = "Arial,sans-serif", e.style.color = "#333";
+        const t = document.createElement("h2");
+        t.textContent = "Pizza Dough Calculator", t.style.textAlign = "center", t.style.marginBottom = "20px", e.appendChild(t);
+        const l = document.createElement("form");
+        l.id = "calculator-form", l.style.display = "flex", l.style.flexDirection = "column", l.style.gap = "10px", e.appendChild(l);
+        const s = (e, t, n) => {
+            const i = document.createElement("label");
+            i.htmlFor = t, i.textContent = e, i.style.color = "#333";
+            const o = document.createElement("input");
+            o.type = "number", o.id = t, o.placeholder = n, o.style.padding = "5px", o.style.fontSize = "14px", l.appendChild(i), l.appendChild(o)
+        };
+        s("Number of pizzas (must be at least 1):", "pizzas", "2"), s("Grams of a single pizza (must be positive):", "pizzaWeight", "250"), s("% Hydration (must be positive):", "hydration", "70"), s("Grams of starter added (must be positive):", "starter", "0"), s("% Salt (default 2%):", "saltPercentage", "2"), s("% Dry Yeast (default 0.2%):", "yeastPercentage", "0.2");
+        const n = document.createElement("div");
+        n.style.display = "flex", n.style.justifyContent = "space-between", n.style.marginTop = "20px", l.appendChild(n);
+        const i = document.createElement("button");
+        i.type = "button", i.textContent = "Calculate", i.style.padding = "10px 20px", i.style.fontSize = "14px", i.style.cursor = "pointer", i.style.border = "1px solid #ccc", i.style.borderRadius = "4px", i.style.backgroundColor = "#f0f0f0", i.style.color = "#333", i.style.transition = "background-color 0.2s", i.onmouseover = () => {
+            i.style.backgroundColor = "#e0e0e0"
+        }, i.onmouseout = () => {
+            i.style.backgroundColor = "#f0f0f0"
+        }, n.appendChild(i);
+        const o = document.createElement("button");
+        o.type = "button", o.textContent = "Close", o.style.padding = "10px 20px", o.style.fontSize = "14px", o.style.cursor = "pointer", o.style.border = "1px solid #ccc", o.style.borderRadius = "4px", o.style.backgroundColor = "#f0f0f0", o.style.color = "#333", o.style.transition = "background-color 0.2s", o.onmouseover = () => {
+            o.style.backgroundColor = "#e0e0e0"
+        }, o.onmouseout = () => {
+            o.style.backgroundColor = "#f0f0f0"
+        }, n.appendChild(o);
+        const a = document.createElement("div");
+        a.id = "results", a.style.marginTop = "20px", a.style.fontSize = "14px", a.style.color = "#333", a.style.display = "flex", a.style.flexDirection = "column", a.style.gap = "5px", l.appendChild(a);
+        const r = document.createElement("div");
+        r.style.marginTop = "30px", r.innerHTML = % 60 < h4 > Protein Content Reference < /h4 ><table style="width:100%;font-size:12px;border-collapse:collapse"><thead><tr><th style="text-align:left">Protein %</th > < th style = "text-align:left" > W Rating < /th><th style="text-align:left">Hydration</th > < /tr></thead > < tbody > < tr > < td > 9 - 10 % < /td><td>w90-220</td > < td > 55 - 60 % < /td></tr > < tr > < td > 10 - 11 % < /td><td>w160-240</td > < td > 60 - 70 % < /td></tr > < tr > < td > 11 - 12 % < /td><td>w220-260</td > < td > 60 - 75 % < /td></tr > < tr > < td > 12 - 13 % < /td><td>w240-290</td > < td > 60 - 80 % < /td></tr > < tr > < td > 13 - 14 % < /td><td>w270-340</td > < td > 65 - 80 % < /td></tr > < tr > < td > 14 - 15 % < /td><td>w320-430</td > < td > 70 - 100 % < /td></tr > < tr > < td > 15 - 16 % < /td><td>w360-400++</td > < td > 80 - 100 % < /td></tr > < /tbody></table > < p style = "font-size:12px;margin-top:10px" > < a href = "https://support.ooni.com/en_us/how-to-work-out-hydration-fermentation-protein-content-HJUHcczHs"
+        target = "_blank"
+        style = "color:blue;text-decoration:underline" > Reference: Ooni Support < /a></p > % 60, l.appendChild(r), document.body.appendChild(e);
 
-                const title = document.createElement('h2');
-                title.textContent = 'Pizza Dough Calculator';
-                title.style.textAlign = 'center';
-                title.style.marginBottom = '20px';
-                container.appendChild(title);
+        function c(e, t, n, i, o, a) {
+            return e < 1 || !Number.isInteger(e) ? "Number of pizzas must be a positive integer starting from 1." : t <= 0 ? "Grams of a single pizza must be a positive number." : n <= 0 ? "% Hydration must be a positive number." : i < 0 ? "Grams of starter added cannot be negative." : o <= 0 ? "% Salt must be a positive number." : a <= 0 ? "% Yeast must be a positive number." : null
+        }
 
-                const form = document.createElement('form');
-                form.style.display = 'flex';
-                form.style.flexDirection = 'column';
-                form.style.gap = '10px';
-                container.appendChild(form);
+        function p() {
+            a.textContent = "";
+            const e = parseInt(document.getElementById("pizzas").value) || 2,
+                t = parseFloat(document.getElementById("pizzaWeight").value) || 250,
+                l = parseFloat(document.getElementById("hydration").value) || 70,
+                s = parseFloat(document.getElementById("starter").value) || 0,
+                n = parseFloat(document.getElementById("saltPercentage").value) || 2,
+                i = parseFloat(document.getElementById("yeastPercentage").value) || 0.2,
+                o = c(e, t, l, s, n, i);
+            if (o) {
+                const e = document.createElement("p");
+                return e.style.color = "red", e.textContent = % 60 Error: $ {
+                    o
+                } % 60, void a.appendChild(e)
+            }
+            const d = t * e,
+                r = s ? d / (1 + (n / 100) + l / 100) : d / (1 + (n / 100) + (i / 100) + (l / 100)),
+                u = r / 100 * l,
+                h = r - s / 2,
+                m = u - s / 2,
+                f = r * (n / 100),
+                g = s ? 0 : r * (i / 100);
+            ! function(e, t) {
+                const l = document.createElement("div");
+                l.style.display = "flex", l.style.justifyContent = "space-between";
+                const s = document.createElement("span");
+                s.textContent = e;
+                const n = document.createElement("span");
+                n.textContent = t, n.style.textAlign = "right", l.appendChild(s), l.appendChild(n), a.appendChild(l)
+            }("Water", % 60 $ {
+                    m.toFixed(1)
+                }
+                grams % 60),
+            function(e, t) {
+                const l = document.createElement("div");
+                l.style.display = "flex", l.style.justifyContent = "space-between";
+                const s = document.createElement("span");
+                s.textContent = e;
+                const n = document.createElement("span");
+                n.textContent = t, n.style.textAlign = "right", l.appendChild(s), l.appendChild(n), a.appendChild(l)
+            }("Flour", % 60 $ {
+                    h.toFixed(1)
+                }
+                grams % 60),
+            function(e, t) {
+                const l = document.createElement("div");
+                l.style.display = "flex", l.style.justifyContent = "space-between";
+                const s = document.createElement("span");
+                s.textContent = e;
+                const n = document.createElement("span");
+                n.textContent = t, n.style.textAlign = "right", l.appendChild(s), l.appendChild(n), a.appendChild(l)
+            }("Salt", % 60 $ {
+                    f.toFixed(1)
+                }
+                grams % 60),
+            function(e, t) {
+                const l = document.createElement("div");
+                l.style.display = "flex", l.style.justifyContent = "space-between";
+                const s = document.createElement("span");
+                s.textContent = e;
+                const n = document.createElement("span");
+                n.textContent = t, n.style.textAlign = "right", l.appendChild(s), l.appendChild(n), a.appendChild(l)
+            }("Dry Yeast (use 2x for fresh yeast)", % 60 $ {
+                    g.toFixed(1)
+                }
+                grams % 60)
+        }
 
-                const createInputField = (labelText, id, placeholder) => {
-                    const label = document.createElement('label');
-                    label.htmlFor = id;
-                    label.textContent = labelText;
-                    label.style.color = '#333';
-
-                    const input = document.createElement('input');
-                    input.type = 'number';
-                    input.id = id;
-                    input.placeholder = placeholder;
-                    input.style.padding = '5px';
-                    input.style.fontSize = '14px';
-
-                    form.appendChild(label);
-                    form.appendChild(input);
-                };
-
-                createInputField('Number of pizzas:', 'pizzas', '2');
-                createInputField('Grams of a single pizza:', 'pizzaWeight', '250');
-                createInputField('% Hydration:', 'hydration', '70');
-                createInputField('Grams of starter:', 'starter', '0');
-                createInputField('% Salt:', 'saltPercentage', '2');
-                createInputField('% Dry Yeast:', 'yeastPercentage', '0.2');
-
-                const results = document.createElement('div');
-                results.style.marginTop = '20px';
-                form.appendChild(results);
-
-                const closeButton = document.createElement('button');
-                closeButton.textContent = 'Close';
-                closeButton.style.marginTop = '20px';
-                closeButton.onclick = () => document.body.removeChild(container);
-
-                form.appendChild(closeButton);
-
-                document.body.appendChild(container);
-            };
-
-            showPopup();
-        })();
+        function m() {
+            document.body.removeChild(e)
+        }
+        i.addEventListener("click", p), o.addEventListener("click", m)
+    };
+    showPopup();
+})();
     `;
 
     // Dynamically set the bookmarklet href
