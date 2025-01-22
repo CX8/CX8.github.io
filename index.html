@@ -181,9 +181,94 @@
 		</div>
 
 
-		<footer class="container-fluid bg-4 text-center">
-			<p>Christian Vuerich, Bootstrap Theme By <a href="https://www.w3schools.com">www.w3schools.com</a></p> 
-		</footer>
+<footer class="container-fluid bg-4 text-center">
+    <p>Christian Vuerich, Bootstrap Theme By <a href="https://www.w3schools.com">www.w3schools.com</a></p>
+    <p>Drag this link to your bookmarks bar to use the Pizza Dough Calculator:</p>
+    <a id="bookmarklet-link" href="#" style="display: inline-block; padding: 10px 15px; background-color: #007bff; color: white; text-decoration: none; border-radius: 4px;">Pizza Dough Calculator</a>
+</footer>
+
+<script>
+    // Define the bookmarklet code
+    const jsCode = `
+        (function() {
+            const showPopup = () => {
+                const container = document.createElement('div');
+                container.style.position = 'fixed';
+                container.style.top = '50%';
+                container.style.left = '50%';
+                container.style.transform = 'translate(-50%, -50%)';
+                container.style.width = '400px';
+                container.style.maxHeight = '80vh';
+                container.style.overflowY = 'auto';
+                container.style.padding = '20px';
+                container.style.backgroundColor = 'white';
+                container.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
+                container.style.borderRadius = '8px';
+                container.style.zIndex = '1000';
+                container.style.fontFamily = 'Arial, sans-serif';
+                container.style.color = '#333';
+
+                const title = document.createElement('h2');
+                title.textContent = 'Pizza Dough Calculator';
+                title.style.textAlign = 'center';
+                title.style.marginBottom = '20px';
+                container.appendChild(title);
+
+                const form = document.createElement('form');
+                form.style.display = 'flex';
+                form.style.flexDirection = 'column';
+                form.style.gap = '10px';
+                container.appendChild(form);
+
+                const createInputField = (labelText, id, placeholder) => {
+                    const label = document.createElement('label');
+                    label.htmlFor = id;
+                    label.textContent = labelText;
+                    label.style.color = '#333';
+
+                    const input = document.createElement('input');
+                    input.type = 'number';
+                    input.id = id;
+                    input.placeholder = placeholder;
+                    input.style.padding = '5px';
+                    input.style.fontSize = '14px';
+
+                    form.appendChild(label);
+                    form.appendChild(input);
+                };
+
+                createInputField('Number of pizzas:', 'pizzas', '2');
+                createInputField('Grams of a single pizza:', 'pizzaWeight', '250');
+                createInputField('% Hydration:', 'hydration', '70');
+                createInputField('Grams of starter:', 'starter', '0');
+                createInputField('% Salt:', 'saltPercentage', '2');
+                createInputField('% Dry Yeast:', 'yeastPercentage', '0.2');
+
+                const results = document.createElement('div');
+                results.style.marginTop = '20px';
+                form.appendChild(results);
+
+                const closeButton = document.createElement('button');
+                closeButton.textContent = 'Close';
+                closeButton.style.marginTop = '20px';
+                closeButton.onclick = () => document.body.removeChild(container);
+
+                form.appendChild(closeButton);
+
+                document.body.appendChild(container);
+            };
+
+            showPopup();
+        })();
+    `;
+
+    // Dynamically set the bookmarklet href
+    document.addEventListener('DOMContentLoaded', () => {
+        const link = document.getElementById('bookmarklet-link');
+        link.href = `javascript:${encodeURIComponent(jsCode.trim())}`;
+    });
+</script>
+
 
 	</body>
 	</html>
